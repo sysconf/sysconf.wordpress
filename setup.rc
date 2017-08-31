@@ -2,6 +2,7 @@
 
 _packages=
 _packages="$_packages wordpress php-pear php-ssh2"
+_packages="$_packages wordpress-theme-twentyseventeen"
 
 sysconf_require_packages $_packages
 
