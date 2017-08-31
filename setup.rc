@@ -1,0 +1,6 @@
+# Installer script for sysconf "sysconf.wordpress"  -*- shell-script -*-
+
+_packages=
+_packages="$_packages wordpress php-pear php-ssh2"
+
+sysconf_require_packages $_packages
