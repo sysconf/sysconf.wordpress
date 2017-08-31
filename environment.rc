@@ -1,0 +1,5 @@
+# Environment (config) for sysconf.mysql        -*- shell-script -*-
+
+SYSCONF_MYSQL_APP_DATABASE=wp0
+SYSCONF_MYSQL_APP_USER=wp0
+SYSCONF_MYSQL_APP_PASSWORD=soo1EiHeAhf1aiti
