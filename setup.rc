@@ -4,3 +4,6 @@ _packages=
 _packages="$_packages wordpress php-pear php-ssh2"
 
 sysconf_require_packages $_packages
+
+
+rm -f /etc/apache2/sites-enabled/000-default.conf
