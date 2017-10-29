@@ -1,6 +1,7 @@
 # Installer script for sysconf "sysconf.wordpress"  -*- shell-script -*-
 
 _packages=
+_packages="$_packages openssh-server"
 _packages="$_packages wordpress php-pear php-ssh2"
 _packages="$_packages wordpress-theme-twentyseventeen"
 
@@ -8,3 +9,28 @@ sysconf_require_packages $_packages
 
 
 rm -f /etc/apache2/sites-enabled/000-default.conf
+
+service apache2 reload
+
+_wp_user=wp-user
+
+if sysconf_fix_user $_wp_user; then
+
+    mkdir /home/$_wp_user
+    chown $_wp_user:$_wp_user /usr/share/wordpress
+fi
+
+if ! -r /home/$_wp_user/id_rsa; then
+
+    nef_log "** YOU SHOULD NOW RUN: "
+    nef_log
+    nef_log "sudo -u $_wp_user ssh-keygen"
+    nef_log "cd /home/$_wp_user"
+    nef_log "sudo -u wp-user sh -c \"cat .ssh/id_rsa.pub >> .ssh/authorized_keys\""
+    nef_log "cp .ssh/id_rsa* ."
+    nef_log 'chown :www-data id_rsa*'
+    nef_log 'chmod 640 id_rsa*'
+    nef_log
+    nef_log "** (thanks!)"
+
+fi
