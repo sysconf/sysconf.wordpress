@@ -20,7 +20,7 @@ if sysconf_fix_user $_wp_user; then
     chown $_wp_user:$_wp_user /usr/share/wordpress
 fi
 
-if ! -r /home/$_wp_user/id_rsa; then
+if ! test -r /home/$_wp_user/id_rsa; then
 
     nef_log "** YOU SHOULD NOW RUN: "
     nef_log
